@@ -69,50 +69,87 @@
 # print('RMSE값 : ',rmse)
 
 #연습문제 경사하강법-텐서플로우 미사용
-import numpy as np 
-import pandas as pd
-import matplotlib.pyplot as plt
+# import numpy as np 
+# import pandas as pd
+# import matplotlib.pyplot as plt
 
-data=[[2,81],[4,93],[6,91],[8,97]]
-x=[i[0] for i in data]
-y=[i[1] for i in data]
+# data=[[2,81],[4,93],[6,91],[8,97]]
+# x=[i[0] for i in data]
+# y=[i[1] for i in data]
 
-plt.figure(figsize=(8,5)) #figre 기름 그릴 영역을 나타내는 객체를 만들어주고 편집할수있게해줌
-plt.scatter(x,y) #연속형 변수의 산점도 그래프를 표현하는 함수
-plt.show()#메모리상에 정리된 차트를 실제 화면에 보여줌
+# plt.figure(figsize=(8,5)) #figre 기름 그릴 영역을 나타내는 객체를 만들어주고 편집할수있게해줌
+# plt.scatter(x,y) #연속형 변수의 산점도 그래프를 표현하는 함수
+# plt.show()#메모리상에 정리된 차트를 실제 화면에 보여줌
 
-x_data=np.array(x) #x,y가 리스트라면 정수인 b와 연산이 불가함으로 array
-y_data=np.array(y)
+# x_data=np.array(x) #x,y가 리스트라면 정수인 b와 연산이 불가함으로 array
+# y_data=np.array(y)
 
-a=0
-b=0
+# a=0
+# b=0
 
-lr=0.01 #학습률 정하기
+# lr=0.01 #학습률 정하기
 
-#몇번 반복될지 설정(0부터 세므로 원하는 반복횟수에 +1)
-epochs=2001
+# #몇번 반복될지 설정(0부터 세므로 원하는 반복횟수에 +1)
+# epochs=2001
 
-#경사 하강법 시작
-for i in range(epochs):
+# #경사 하강법 시작
+# for i in range(epochs):
     
-    y_pred = a*x_data +b #y를 구하는 식 세우기
-    error = y_data - y_pred #오차를 구하는 식
-    #오차 함수를 a 로 미분한값
-    a_diff = -(1/len(x_data))*sum(x_data*(error))
-    #오차 함수를 b 로 미분한값
-    b_diff=- -(1/len(x_data))* sum(error) 
-    #공식대로 코드를 짰을경우
-    a_diff = 2/len(x_data)*sum((a*x_data+b-y_data)*x_data)
-    b_diff= 2/len(x_data)*sum((a*x_data+b-y_data))
+#     y_pred = a*x_data +b #y를 구하는 식 세우기
+#     error = y_data - y_pred #오차를 구하는 식
+#     #오차 함수를 a 로 미분한값
+#     a_diff = -(1/len(x_data))*sum(x_data*(error))
+#     #오차 함수를 b 로 미분한값
+#     b_diff=- -(1/len(x_data))* sum(error) 
+#     #공식대로 코드를 짰을경우
+#     a_diff = 2/len(x_data)*sum((a*x_data+b-y_data)*x_data)
+#     b_diff= 2/len(x_data)*sum((a*x_data+b-y_data))
 
-    a = a-lr*a_diff #학습률을 곱해 기존의 a값 업데이트
-    b = b-lr*b_diff #학습률을 곱해 기존의 b값 업데이트
+#     a = a-lr*a_diff #학습률을 곱해 기존의 a값 업데이트
+#     b = b-lr*b_diff #학습률을 곱해 기존의 b값 업데이트
     
-    if i%100 ==0: #100번 반복될 때마다 현재의 a,b값 출력
-        print('epoch=%.f, 기울기=%.04f, 절편==%.04f'%(i,a,b))
+#     if i%100 ==0: #100번 반복될 때마다 현재의 a,b값 출력
+#         print('epoch=%.f, 기울기=%.04f, 절편==%.04f'%(i,a,b))
 
-#앞서 구한 기울기와 절편을 이용해 그래프를 다시그리기    
-y_pred=a*x_data +b
-plt.scatter(x,y)
-plt.plot([min(x_data),max(x_data)],[min(y_pred),max(y_pred)])
-plt.show()
+# #앞서 구한 기울기와 절편을 이용해 그래프를 다시그리기    
+# y_pred=a*x_data +b
+# plt.scatter(x,y)
+# plt.plot([min(x_data),max(x_data)],[min(y_pred),max(y_pred)])
+# plt.show()
+from bs4 import BeautifulSoup
+
+import requests
+
+from datetime import datetime
+
+ 
+
+url = "http://www.daum.net/"
+
+response = requests.get(url)
+
+soup = BeautifulSoup(response.text, 'html.parser')
+
+rank = 1
+
+ 
+
+results = soup.findAll('a','link_favorsch')
+
+ 
+
+search_rank_file = open("rankresult.txt","a")
+
+ 
+
+print(datetime.today().strftime("%Y년 %m월 %d일의 실시간 검색어 순위입니다.\n"))
+
+ 
+
+for result in results:
+
+    search_rank_file.write(str(rank)+"위:"+result.get_text()+"\n")
+
+    print(rank,"위 : ",result.get_text(),"\n")
+
+    rank += 1
