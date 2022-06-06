@@ -116,40 +116,108 @@
 # plt.scatter(x,y)
 # plt.plot([min(x_data),max(x_data)],[min(y_pred),max(y_pred)])
 # plt.show()
-from bs4 import BeautifulSoup
 
-import requests
+# matplotlib 사용법 익히기
+# import numpy as np
+# import matplotlib.pyplot as plt
 
-from datetime import datetime
+# a=np.random.rand(1000)
+# b=np.random.rand(10000)
+# c=np.random.rand(100000)
 
+# plt.hist(a,bins=100, density=True , alpha=0.5, histtype='step')
+# plt.hist(b,bins=100,density=True,alpha=0.75,histtype='step')
+# plt.hist(c,bins=100,density=True,alpha=1.0,histtype='step')
+# plt.show()
+
+# a=np.random.randint(0,10,100)
+# b=np.random.randint(0,10,1000)
+# c=np.random.randint(0,10,10000)
+# d=np.random.randint(0,10,100000)
  
+# plt.subplot(221)
+# plt.hist(a,bins=10)
+# plt.title('axes 1')
+# plt.subplot(222)
+# plt.hist(a,bins=10)
+# plt.title('axes 2')
+# plt.subplot(223)
+# plt.hist(a,bins=10)
+# plt.title('axes 3')
+# plt.subplot(224)
+# plt.hist(a,bins=10)
+# plt.title('axes 4')
+# plt.tight_layout()
+# plt.show()
 
-url = "http://www.daum.net/"
+# import numpy as np
 
-response = requests.get(url)
+# x=np.linspace(-np.pi,np.pi,256)
+# c=np.cos(x)
+# plt.title('del grid')
+# plt.plot(x,c)
+# plt.xticks([-np.pi,np.pi/2,0,np.pi/2,np.pi],[r'$-\pi/2$',r'$0$',r'$+\pi/2$',r'$+\pi$'])
+# plt.yticks([-1, 0 ,+1],['Low','Zero','High'])
+# plt.grid(True)
+# plt.show()
 
-soup = BeautifulSoup(response.text, 'html.parser')
+# t=np.arange(0.,5.,0.2)
+# plt.title('asd')
+# plt.plot(t,t,'r--',t,0.5*t**2,'bs:',t,0.2*t**3,'g^-')
+# plt.show()
 
-rank = 1
+# #여러개의 선을 그릴떄
+# plt.title('more than 2 together')
+# plt.plot([1,4,9,16],c='b',lw=5,ls='--',marker='o',ms=15,mec='g',mew=5,mfc='r')
+# plt.plot([9,16,4,1],c='k',lw=5,ls=':',marker='s',ms=10,mec='m',mew=5,mfc='c')
+# plt.show()
 
- 
+# x=np.linspace(-np.pi,np.pi,256)
+# c,s=np.cos(x),np.sin(x)
+# plt.title('mark legend')
+# plt.plot(x,c,ls='--',label='cosine')
+# plt.plot(x,s,ls=':',label='sine')
+# plt.legend(loc=2)
+# plt.show()
 
-results = soup.findAll('a','link_favorsch')
+# #범례 표시하기
+# x=np.linspace(-np.pi,np.pi,256)
+# c,s=np.cos(x),np.sin(x)
+# plt.plot(x,c,label='cosine')
+# plt.xlabel('time')
+# plt.ylabel('amplitude')
+# plt.title('cosine plot')
+# plt.show()
 
- 
+# #y,x축의 이름 라벨링
+# np.random.seed(2)
+# f1=plt.figure(figsize=(10,2))
+# plt.title('figsize=(10,2)')
+# plt.plot(np.random.randn(100))
+# plt.show()
 
-search_rank_file = open("rankresult.txt","a")
+# f1=plt.figure(1)
+# plt.title('current figure ')
+# plt.plot([1,2,3,4],'ro:')
+# f2=plt.gcf()
+# print(f1,id(f1))
+# print(f2,id(f2))
+# plt.show()
 
- 
+# x1=np.linspace(0.0,5.0)
+# x2=np.linspace(0.0,2.0)
+# y1=np.cos(2*np.pi*x1)*np.exp(-x1)
+# y2=np.cos(2*np.pi*x2)
+# ax1=plt.subplot(2,1,1)
+# plt.plot(x1,y1,'yo-')
+# plt.title('A take of 2 subplots')
+# plt.ylabel('Damped oscillation')
+# print(ax1)
 
-print(datetime.today().strftime("%Y년 %m월 %d일의 실시간 검색어 순위입니다.\n"))
-
- 
-
-for result in results:
-
-    search_rank_file.write(str(rank)+"위:"+result.get_text()+"\n")
-
-    print(rank,"위 : ",result.get_text(),"\n")
-
-    rank += 1
+# ax2=plt.subplot(2,1,2)
+# plt.plot(x2,y2,'r.-')
+# plt.xlabel('time(s)')
+# plt.ylabel('undamped ')
+# print(ax2)
+# plt.tight_layout()
+# plt.show()
