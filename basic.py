@@ -221,3 +221,62 @@
 # print(ax2)
 # plt.tight_layout()
 # plt.show()
+
+# 같은 그래프그리기를 2차원 배열로 표현하기
+# fig,axes=plt.subplots(2,2)
+# np.random.seed(0)
+# axes[0,0].plot(np.random.rand(5))
+# axes[0,0].set_title('axes 1')
+# axes[0,1].plot(np.random.rand(5))
+# axes[0,1].set_title('axes 2')
+# axes[1,0].plot(np.random.rand(5))
+# axes[1,0].set_title('axes 3')
+# axes[1,1].plot(np.random.rand(5))
+# axes[1,1].set_title('axes 4')
+
+# plt.tight_layout()
+# plt.show()
+
+#여러가지 플롯의 여러가지 종류
+
+#bar chart
+# color=['blue','green','red']
+# y=[2,3,1]
+# x=np.arange(len(y))
+# xlabel=['A','B','C']
+# plt.title('barchart')
+# plt.bar(x,y)
+# plt.yticks(sorted(y))
+# plt.yticks(y)
+# plt.xlabel("ABC")
+# plt.ylabel('often')
+# plt.show()
+
+#bar chart
+# np.random.seed(0)
+# people=['ja','na','da','la']
+# y_pos=np.arange(len(people))
+# performance=3+10*np.random.rand(len(people))
+# error = np.random.rand(len(people))
+# print(performance)
+# print(error)
+# plt.title('barh chart')
+# plt.barh(y_pos,performance,xerr=error,alpha=0.4)
+
+#파이차트
+# labels=['ja','na','da','la']
+# sizes=[20,30,45,10]
+# colors=['yellowgreen','gold','lightskyblue','lightcoral']
+# explode=(0,0.1,0.2,0.3)
+# #explode 원의 중심에서 얼마나 떨어지는가
+# plt.title('Pie chart',fontdict={'fontsize' : 20})
+# plt.pie(sizes, explode=explode, labels=labels, colors=colors, autopct='$1.1f%%', shadow=True, startangle=90)
+# plt.axis('equal')
+# plt.show()
+
+#히스토그램
+# np.random.seed(0)
+# x=np.random.randn(1000)
+# plt.title('Histogram')
+# arrays,bins,patches=plt.hist(x,bins=10)
+# plt.show()
