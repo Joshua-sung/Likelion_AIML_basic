@@ -162,3 +162,125 @@
 
 # plt.legend()
 # plt.show()
+
+import numpy as np
+x=np.linspace(-np.pi,np.pi,256)
+c=np.cos(x)
+plt.title('x,y tick label set')
+plt.plot(x,c)
+plt.xticks([-np.pi,np.pi/2,0,np.pi/2,np.pi])
+plt.yticks([-1, 0 ,+1])
+plt.show() 
+
+import numpy as np
+x=np.linspace(-np.pi,np.pi,256)
+c=np.cos(x)
+plt.title('x,y tick label set')
+plt.plot(x,c)
+plt.xticks([-np.pi,np.pi/2,0,np.pi/2,np.pi],[r'$-\pi/2$',r'$0$',r'$+\pi/2$',r'$+\pi$'])
+plt.yticks([-1, 0 ,+1],['Low','Zero','High'])
+plt.show()
+
+import numpy as np
+x=np.linspace(-np.pi,np.pi,256)
+c=np.cos(x)
+plt.title('del grid')
+plt.plot(x,c)
+plt.xticks([-np.pi,np.pi/2,0,np.pi/2,np.pi],[r'$-\pi/2$',r'$0$',r'$+\pi/2$',r'$+\pi$'])
+plt.yticks([-1, 0 ,+1],['Low','Zero','High'])
+plt.grid(True)
+plt.show()
+
+t=np.arange(0.,5.,0.2)
+plt.title('asd')
+plt.plot(t,t,'r--',t,0.5*t**2,'bs:',t,0.2*t**3,'g^-')
+plt.show()
+
+#여러개의 선을 그릴떄
+plt.title('more than 2 together')
+plt.plot([1,4,9,16],c='b',lw=5,ls='--',marker='o',ms=15,mec='g',mew=5,mfc='r')
+plt.plot([9,16,4,1],c='k',lw=5,ls=':',marker='s',ms=10,mec='m',mew=5,mfc='c')
+plt.show()
+
+ x=np.linspace(-np.pi,np.pi,256)
+c,s=np.cos(x),np.sin(x)
+plt.title('mark legend')
+plt.plot(x,c,ls='--',label='cosine')
+plt.plot(x,s,ls=':',label='sine')
+plt.legend(loc=2)
+plt.show()
+
+#범례 표시하기
+x=np.linspace(-np.pi,np.pi,256)
+c,s=np.cos(x),np.sin(x)
+plt.plot(x,c,label='cosine')
+plt.xlabel('time')
+plt.ylabel('amplitude')
+plt.title('cosine plot')
+plt.show()
+
+#y,x축의 이름 라벨링
+np.random.seed(2)
+f1=plt.figure(figsize=(10,2))
+plt.title('figsize=(10,2)')
+plt.plot(np.random.randn(100))
+plt.show()
+
+f1=plt.figure(1)
+plt.title('current figure ')
+plt.plot([1,2,3,4],'ro:')
+f2=plt.gcf()
+print(f1,id(f1))
+print(f2,id(f2))
+plt.show()
+
+x1=np.linspace(0.0,5.0)
+x2=np.linspace(0.0,2.0)
+y1=np.cos(2*np.pi*x1)*np.exp(-x1)
+y2=np.cos(2*np.pi*x2)
+ax1=plt.subplot(2,1,1)
+plt.plot(x1,y1,'yo-')
+plt.title('A take of 2 subplots')
+plt.ylabel('Damped oscillation')
+print(ax1)
+
+ax2=plt.subplot(2,1,2)
+plt.plot(x2,y2,'r.-')
+plt.xlabel('time(s)')
+plt.ylabel('undamped ')
+print(ax2)
+
+plt.tight_layout()
+plt.show()
+np.random.seed(0)
+#subplot(가로,세로,사분면) (221)-> 2x2배치 1사분면에 배치
+plt.subplot(221)
+plt.plot(np.random.rand(5))
+plt.title('axes 1')
+plt.subplot(222)
+plt.plot(np.random.rand(5))
+plt.title('axes 2')
+plt.subplot(223)
+plt.plot(np.random.rand(5))
+plt.title('axes 3')
+plt.subplot(224)
+plt.plot(np.random.rand(5))
+plt.title('axes 4')
+plt.tight_layout()
+plt.show()
+
+# 같은 그래프그리기를 2차원 배열로 표현하기
+
+fig,axes=plt.subplots(2,2)
+np.random.seed(0)
+axes[0,0].plot(np.random.rand(5))
+axes[0,0].set_title('axes 1')
+axes[0,1].plot(np.random.rand(5))
+axes[0,1].set_title('axes 2')
+axes[1,0].plot(np.random.rand(5))
+axes[1,0].set_title('axes 3')
+axes[1,1].plot(np.random.rand(5))
+axes[1,1].set_title('axes 4')
+
+plt.tight_layout()
+plt.show()
